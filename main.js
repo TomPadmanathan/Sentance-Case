@@ -1,60 +1,48 @@
-// Word/Character Count
+// Get Word And Character Count Function
 function getWordCharacterCount(){
-    var text = document.getElementById('textBox').value
-    var wordCount = text.split(' ').length
-    var characterCount = text.length
-    if(characterCount == 0) {
+    let text = document.getElementById('textBox').value
+    let wordCount = text.split(' ').length
+    let characterCount = text.length
+    if(characterCount === 0) {
         wordCount = 0
     }
-    wordCount = 'Word count: ' + wordCount
-    characterCount = 'Character count: ' + characterCount
-    document.getElementById('wordCount').innerHTML=wordCount
-    document.getElementById('characterCount').innerHTML=characterCount
+    document.getElementById('wordCount').innerHTML='Word count: ' + wordCount
+    document.getElementById('characterCount').innerHTML='Character count: ' + characterCount
 }
 
-// Upper Case
+// Upper Case Function
 function upperCase(){
-    var text = document.getElementById('textBox').value
-    var upperCase = text.toUpperCase()
-    document.getElementById('textBox').value=upperCase
+    document.getElementById('textBox').value=document.getElementById('textBox').value.toUpperCase()
 }
 
-// Lower Case
+// Lower Case Function
 function lowerCase(){
-    var text = document.getElementById('textBox').value
-    var lowerCase = text.toLowerCase()
-    document.getElementById('textBox').value=lowerCase
+    document.getElementById('textBox').value=document.getElementById('textBox').value.toLowerCase()
 }
 
-// Alternating Case
+// Alternating Case Function
 function alternatingCase(){
-    var text = document.getElementById('textBox').value
-    var alternatingCase = text.split('').map((c,i) => 
+    document.getElementById('textBox').value=document.getElementById('textBox').value.split('').map((c,i) => 
     i % 2 == 0 ? c.toLowerCase() : c.toUpperCase()
     ).join('')
-    console.log(alternatingCase)
-    document.getElementById('textBox').value=alternatingCase
 }
 
-// Capitalized Case
+// Capitalized Case Function
 function capitalizedCase(){
-    var text = document.getElementById('textBox').value
-    var capitalizedCase = text.toLowerCase().split(" ")
-    for(var i = 0; i< capitalizedCase.length; i++){
-        capitalizedCase[i] = capitalizedCase[i][0].toUpperCase() + capitalizedCase[i].slice(1)
+    let text = document.getElementById('textBox').value.toLowerCase().split(" ")
+    for(let i = 0; i< text.length; i++){
+        text[i] = text[i][0].toUpperCase() + text[i].slice(1)
     }
-    capitalizedCase = capitalizedCase.join(" ")
-    document.getElementById('textBox').value=capitalizedCase
+    document.getElementById('textBox').value=text.join(" ")
 }
 
-// Invert Case
+// Invert Case Function
 function invertCase(){
-    var text = document.getElementById('textBox').value
-
-    var invertCase = ''
-    var index = 0
+    let text = document.getElementById('textBox').value
+    let invertCase = ''
+    let index = 0
     while (index < text.length) {
-        var lowerUpper = text.charAt(index)
+        let lowerUpper = text.charAt(index)
         if (lowerUpper == lowerUpper.toUpperCase()) {
             lowerUpper = lowerUpper.toLowerCase()
         } else {
@@ -66,12 +54,12 @@ function invertCase(){
     document.getElementById('textBox').value=invertCase
 }
 
+// Clear Text Function
 function clearText(){
     document.getElementById('textBox').value=''
 }
 
-// Copy
+// Copy Text Function
 function copy(){
-    var text = document.getElementById("textBox").value
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(document.getElementById("textBox").value)
 }
